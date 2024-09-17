@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace EnrollSys
 {
@@ -15,17 +17,20 @@ namespace EnrollSys
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
-        public Person() : this(DEF_NAME,DEF_EMAIL,DEF_PN) { }
-        public Person(string name, string email, string phoneNumber)
+        public Address Address { get; set; }
+
+        public Person() : this(DEF_NAME,DEF_EMAIL,DEF_PN, new Address()) { }
+        public Person(string name, string email, string phoneNumber, Address address)
         {
             Name = name;
             Email = email;
             PhoneNumber = phoneNumber;
+            Address = address;
         }
 
         public override string ToString()
         {
-            return $"Name: {Name}, Email: {Email}, Phone: {PhoneNumber}";
+            return $"Name: {Name}, Email: {Email}, Phone: {PhoneNumber}, Address: {Address}";
         }
     }
 
