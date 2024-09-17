@@ -16,22 +16,21 @@ namespace EnrollSys
         public DateTime DateEnrolled { get; set; }
         public string Grade { get; set; }
         public int Semester { get; set; }
-        public Student Student { get; set; }
+        
         public Subject Subject { get; set; }
 
-        public Enrollment(): this(DEF_DATE_ENROLLED,DEF_GRADE,DEF_SEMESTER, new Student(), new Subject()) { }
-        public Enrollment(DateTime dateEnrolled, string grade, int semester, Student student, Subject subject)
+        public Enrollment(): this(DEF_DATE_ENROLLED,DEF_GRADE,DEF_SEMESTER, new Subject()) { }
+        public Enrollment(DateTime dateEnrolled, string grade, int semester, Subject subject)
         {
             DateEnrolled = dateEnrolled;
             Grade = grade;
             Semester = semester;
-            Student = student;
             Subject = subject;
         }
 
         public override string ToString()
         {
-            return $"Date Enrolled: {DateEnrolled.ToShortDateString()}, Grade: {Grade}, Semester: {Semester}, Student: {Student.Name}, Subject: {Subject.SubjectName}";
+            return $"Date Enrolled: {DateEnrolled.ToShortDateString()}, Grade: {Grade}, Semester: {Semester}, Subject: {Subject.SubjectName}";
         }
     }
 
