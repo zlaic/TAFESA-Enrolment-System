@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EnrollSys
 {
-    public class Student : Person
+    public class Student : Person, IComparable<Student>
     {
         public const string DEF_ID = "0";
         public const string DEF_PROGRAM = "none";
@@ -100,6 +100,13 @@ namespace EnrollSys
         public override int GetHashCode()
         {
             return this.StudentID.GetHashCode();
+        }
+
+        // Implementation of IComparable<Student>
+        public int CompareTo(Student other)
+        {
+            if (other == null) return 1; // This means "this" is greater
+            return this.StudentID.CompareTo(other.StudentID);
         }
     }
 
