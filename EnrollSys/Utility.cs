@@ -18,12 +18,28 @@ namespace EnrollSys
         /// <returns>index location of match : returns -1</returns>
         public static int LinearSearchArray<T>(T[] array, T target) where T : IComparable<T>
         {
-            for (int i = 0; i < array.Length; i++)
+            if (array == null)
             {
-                if (array[i].CompareTo(target) == 0)
-                    return i;
+                Console.WriteLine("Error: Array cannot be null.");
+                return -1; 
             }
-            return -1; // -1 is returned when not found
+
+            try
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i].CompareTo(target) == 0)
+                        return i;
+                }
+                return -1; // -1 is returned when not found
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred during linear search: {ex.Message}");
+                return -1;
+            }
+            
+            
         }
 
         /// <summary>
@@ -35,23 +51,38 @@ namespace EnrollSys
         /// <returns>index location of match : returns -1</returns>
         public static int BinarySearchArray<T>(T[] array, T target) where T : IComparable<T>
         {
-            int min = 0;
-            int max = array.Length - 1;
-            int mid;
-            int compare;
-            while (min <= max)
+            if (array == null)
             {
-                mid = (min + max) / 2;
-                compare = array[mid].CompareTo(target);
-
-                if (compare == 0)
-                    return mid;
-                if (compare < 0)
-                    min = mid + 1;
-                else
-                    max = mid - 1;
+                Console.WriteLine("Error: Array cannot be null.");
+                return -1;
             }
-            return -1; // -1 is returned when not found
+            try
+            {
+                int min = 0;
+                int max = array.Length - 1;
+                int mid;
+                int compare;
+                while (min <= max)
+                {
+                    mid = (min + max) / 2;
+                    compare = array[mid].CompareTo(target);
+
+                    if (compare == 0)
+                        return mid;
+                    if (compare < 0)
+                        min = mid + 1;
+                    else
+                        max = mid - 1;
+                }
+                return -1; // -1 is returned when not found
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred during binary search: {ex.Message}");
+                return -1; 
+            }
+            
         }
 
 
